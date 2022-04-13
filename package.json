@@ -1,0 +1,10 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "create-release": "lerna exec --concurrency 1 -- npx --no-install semantic-release --branches main -e semantic-release-monorepo"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}

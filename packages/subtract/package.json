@@ -1,0 +1,43 @@
+{
+  "name": "@mauriciomelo/subtract",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "Mauricio Melo <mauricioltw@gmail.com>",
+  "homepage": "https://github.com/mauriciomelo/monorepo-example#readme",
+  "license": "MIT",
+  "type": "module",
+  "source": "src/index.ts",
+  "module": "./dist/index.module.js",
+  "main": "./dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauriciomelo/monorepo-example.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "release": {
+    "extends": "semantic-release-monorepo"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "microbundle",
+    "dev": "microbundle watch"
+  },
+  "bugs": {
+    "url": "https://github.com/mauriciomelo/monorepo-example/issues"
+  },
+  "devDependencies": {
+    "microbundle": "^0.14.2",
+    "semantic-release": "^19.0.2",
+    "semantic-release-monorepo": "^7.0.5"
+  }
+}
