@@ -4,12 +4,15 @@ orbs:
 version: 2.1
 
 workflows:
-  deploy:
+  lerna_deploy:
     jobs:
-      - create_release
+      - lerna_create_release
+  nx_deploy:
+    jobs:
+      - nx_create_release
 
 jobs:
-  create_release:
+  lerna_create_release:
     executor:
       name: node/default
       tag: 14.17.3
@@ -26,11 +29,30 @@ jobs:
           command: npm ci
           name: install
       - run:
-          command: npx lerna bootstrap
-          name: bootstrap
-      - run:
           command: npx lerna run build
           name: build
       - run:
-          command: npm run create-release
+          command: lerna run release
+          name: create_release
+  nx_create_release:
+    executor:
+      name: node/default
+      tag: 14.17.3
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "a8:28:9e:35:af:4f:7e:e7:3c:05:97:cd:ed:4e:64:2d"
+      - checkout
+      - node/install-packages
+      - run:
+          command: git config --global user.email circleci@circleci && git config --global user.name CircleCI
+          name: set git commiter
+      - run:
+          command: npm ci
+          name: install
+      - run:
+          command: npx nx run-many --target=build --all
+          name: build
+      - run:
+          command: npx nx run-many --target=release --all
           name: create_release

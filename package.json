@@ -1,10 +1,21 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "apps/next-app",
+    "libs/calc",
+    "libs/sum",
+    "libs/subtract"
+  ],
   "scripts": {
     "create-release": "lerna exec --concurrency 1 -- npx --no-install semantic-release --branches main -e semantic-release-monorepo"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@nrwl/cli": "13.10.2",
+    "@nrwl/next": "^13.10.2",
+    "@nrwl/workspace": "13.10.2",
+    "lerna": "^4.0.0",
+    "nx": "13.10.2",
+    "typescript": "4.2.4"
   }
 }

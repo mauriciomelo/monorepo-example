@@ -1,5 +1,5 @@
 {
-  "name": "@mauriciomelo/calc",
+  "name": "@mauriciomelo/sum",
   "version": "1.0.0",
   "description": "> TODO: description",
   "author": "Mauricio Melo <mauricioltw@gmail.com>",
@@ -10,6 +10,9 @@
   "module": "./dist/index.module.js",
   "main": "./dist/index.cjs",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -21,15 +24,13 @@
     "type": "git",
     "url": "git+https://github.com/mauriciomelo/monorepo-example.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "release": {
     "extends": "semantic-release-monorepo"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "microbundle",
+    "release": "npx --no-install semantic-release --branches main -e semantic-release-monorepo",
     "dev": "microbundle watch"
   },
   "bugs": {
@@ -38,8 +39,6 @@
   "devDependencies": {
     "microbundle": "^0.14.2",
     "semantic-release": "^19.0.2",
-    "semantic-release-monorepo": "^7.0.5",
-    "@mauriciomelo/subtract": "*",
-    "@mauriciomelo/sum": "*"
+    "semantic-release-monorepo": "^7.0.5"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@mauriciomelo/subtract",
+  "name": "@mauriciomelo/calc",
   "version": "1.0.0",
   "description": "> TODO: description",
   "author": "Mauricio Melo <mauricioltw@gmail.com>",
@@ -30,6 +30,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "microbundle",
+    "release": "npx --no-install semantic-release --branches main -e semantic-release-monorepo",
     "dev": "microbundle watch"
   },
   "bugs": {
@@ -38,6 +39,8 @@
   "devDependencies": {
     "microbundle": "^0.14.2",
     "semantic-release": "^19.0.2",
-    "semantic-release-monorepo": "^7.0.5"
+    "semantic-release-monorepo": "^7.0.5",
+    "@mauriciomelo/subtract": "*",
+    "@mauriciomelo/sum": "*"
   }
 }
