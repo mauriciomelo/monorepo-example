@@ -6,16 +6,24 @@ version: 2.1
 workflows:
   lerna_deploy:
     jobs:
-      - lerna_create_release
+      - approve:
+          type: approval
+      - lerna_create_release:
+          requires:
+            - approve
   nx_deploy:
     jobs:
-      - nx_create_release
+      - approve:
+          type: approval
+      - nx_create_release:
+          requires:
+            - approve
 
 jobs:
   lerna_create_release:
     executor:
       name: node/default
-      tag: 14.17.3
+      tag: 16.14.2
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -32,12 +40,12 @@ jobs:
           command: npx lerna run build
           name: build
       - run:
-          command: lerna run release
+          command: npx lerna run release
           name: create_release
   nx_create_release:
     executor:
       name: node/default
-      tag: 14.17.3
+      tag: 16.14.2
     steps:
       - add_ssh_keys:
           fingerprints:
